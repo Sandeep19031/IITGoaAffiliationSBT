@@ -1,1 +1,1 @@
-# IITGoaMembershipSBT
+# IITGoaAffiliationSBT
