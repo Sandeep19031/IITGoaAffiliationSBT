@@ -1,0 +1,26 @@
+@import "react-datepicker/dist/react-datepicker.css";
+@import "../../Theme/_var.scss";
+
+.date-picker {
+  width: 100%;
+  border: 0;
+  padding-left: 1rem;
+
+  &:focus {
+    outline: 0;
+  }
+}
+.react-datepicker {
+  font-size: 1.4rem;
+  &__current-month,
+  &-time__header,
+  &-year-header {
+    font-size: 1.6rem;
+  }
+
+  &__day-name,
+  &__day,
+  &__time-name {
+    margin: 0.5rem;
+  }
+}

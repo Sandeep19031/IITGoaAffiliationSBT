@@ -1,0 +1,27 @@
+@import "../../../Theme/_var.scss";
+
+.search-row {
+  margin-bottom: 7rem;
+
+  .custom-input {
+    margin-bottom: 0;
+    @media (max-width: 767px) {
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.detail-row {
+  margin: 0;
+  [class*="col-"] {
+    padding: 0 0.2rem;
+
+    @media (max-width: 767px) {
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.not-register-link {
+  padding-top: 2rem;
+}

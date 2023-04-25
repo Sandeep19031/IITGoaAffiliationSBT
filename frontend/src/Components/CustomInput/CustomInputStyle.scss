@@ -1,0 +1,68 @@
+@import "../../Theme/_var.scss";
+
+.custom-input {
+  margin-bottom: 1.5rem;
+  .form-label {
+    color: $dark;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+  }
+
+  &__inputwrap {
+    background-color: $white;
+    box-shadow: 0px 3px 6px #00000008;
+    border: 0.1rem solid $borderColor-3;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    padding: 1.4rem 1.5rem;
+    transition: all 0.3s ease-in-out;
+    @media (max-width: 767px) {
+      padding: 1rem 1.5rem;
+    }
+
+    .input-group-text,
+    .form-control {
+      border: 0;
+      background-color: transparent;
+      padding: 0;
+    }
+    .input-group-text {
+      min-width: 2rem;
+
+      svg {
+        path {
+          transition: all 0.25s ease-in-out;
+          fill: #b1b1b1;
+        }
+      }
+    }
+    .form-control {
+      padding-left: 1rem;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: $dark;
+      @media (max-width: 767px) {
+        font-size: 1.4rem;
+      }
+      &::placeholder {
+        color: $lightBlack;
+      }
+
+      &:focus {
+        box-shadow: unset;
+      }
+    }
+    &:hover,
+    &:focus {
+      border-color: $borderColor-2;
+
+      svg {
+        path {
+          transition: all 0.25s ease-in-out;
+          fill: #64637a;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+@import "../../../Theme/_var.scss";
+
+.sbt-detail-row {
+  margin: 4.8rem 0;
+  .detail-card {
+    &__title {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &--arrows {
+      position: relative;
+
+      &::after,
+      &::before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 1.5rem solid transparent;
+        border-right: 1.5rem solid transparent;
+        border-top: 1.5rem solid $white;
+        right: 35%;
+
+        @media (max-width: 574px) {
+          display: none;
+        }
+      }
+
+      &::after {
+        top: 0;
+      }
+
+      &::before {
+        transform: rotate(180deg);
+        bottom: 0;
+      }
+    }
+  }
+}
+.content-list {
+  &--flex {
+    li {
+      flex: 0 0 70%;
+      &:nth-child(even) {
+        flex: 0 0 30%;
+        @media (max-width: 574px) {
+          flex: 0 0 100%;
+        }
+      }
+      @media (max-width: 574px) {
+        flex: 0 0 100%;
+      }
+    }
+  }
+}

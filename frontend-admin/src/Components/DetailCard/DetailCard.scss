@@ -1,0 +1,28 @@
+@import "../../Theme/_var.scss";
+
+.detail-card {
+  border-radius: 0.8rem;
+  overflow: hidden;
+  height: 100%;
+  background: $gradient-2;
+
+  &__title {
+    padding: 1rem 2rem;
+    text-align: center;
+    font-size: 1.4rem;
+    line-height: 3rem;
+    font-weight: 500;
+    color: $dark;
+    background: $gradient-3;
+
+    .left-img,
+    .right-img {
+      width: 2.5rem;
+    }
+  }
+
+  &__content {
+    padding: 1.5rem 2rem;
+    min-height: 24.8rem;
+  }
+}
