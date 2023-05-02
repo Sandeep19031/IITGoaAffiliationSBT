@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ContractServices from "../../services/ContractServices";
+import { getTXHash } from "../../services/ServerService";
 import logo from "../../Theme/Assets/Images/Logo.svg.png";
 import "./IDCard.scss";
 import photo from "./profilePhoto.jpg";
@@ -78,7 +79,7 @@ const IDCardFront = ({ sbtDetails, tokenDetails }) => {
   );
 };
 
-const IDCardBack = ({ sbtDetails, tokenDetails }) => {
+const IDCardBack = ({ sbtDetails, tokenDetails, txHash }) => {
   return (
     <div className="idCard_Back">
       <div className="blackBox"></div>
@@ -121,11 +122,11 @@ const IDCardBack = ({ sbtDetails, tokenDetails }) => {
       <div className="back_bottom">
         <p>This card is property of IIT Goa</p>
         <a
-          href={`https://mumbai.polygonscan.com/tx/0x037142385cde132597b554b3178f3063709dceb40f7ee1bfd23aad96a65ccb43`}
+          href={`https://mumbai.polygonscan.com/tx/${txHash}`}
           target={"_blank"}
           color="black"
         >
-          0x037142385cde132597b554b3178f3063709dceb40f7ee1bfd23aad96a65ccb43
+          {txHash}
         </a>
         <p>INDIAN INSTITUTE OF TECHNOLOGY GOA</p>
         <p>
@@ -145,6 +146,7 @@ export default function IDCard() {
   const [sbtID, setSbtId] = useState(Number(0));
   const [sbtDetails, setSbtDetails] = useState();
   const [tokenDetails, setTokenDetails] = useState();
+  const [txHash, setTxHash] = useState();
 
   const [error, setError] = useState(false);
   useEffect(() => {
@@ -171,6 +173,11 @@ export default function IDCard() {
       let datauri = data?.data[0];
       console.log("data of uri", datauri);
       setTokenDetails(datauri);
+
+      // 5. Get TxHash
+      const data2 = await getTXHash(address);
+      console.log("txHash: ", data2.data);
+      setTxHash(data2?.data.txHash);
     };
     fetchdata();
   }, []);
@@ -180,8 +187,12 @@ export default function IDCard() {
       {tokenDetails && (
         <IDCardFront sbtDetails={sbtDetails} tokenDetails={tokenDetails} />
       )}
-      {tokenDetails && (
-        <IDCardBack sbtDetails={sbtDetails} tokenDetails={tokenDetails} />
+      {tokenDetails && txHash && (
+        <IDCardBack
+          sbtDetails={sbtDetails}
+          tokenDetails={tokenDetails}
+          txHash={txHash}
+        />
       )}
     </div>
   );

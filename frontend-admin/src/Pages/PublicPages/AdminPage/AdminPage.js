@@ -14,6 +14,7 @@ import { toast } from "../../../Components/Layout/Toasts/Toast";
 import { type } from "@testing-library/user-event/dist/type";
 import Web3 from "web3";
 import Loader from "../../../Components/LoaderComponent/Loader";
+import { saveTXHash } from "../../../services/ServerService";
 
 export default function AdminPage() {
   const [sheetData, setSheetData] = useState();
@@ -148,6 +149,9 @@ export default function AdminPage() {
         txHashArrData[`row${i + 1}`] = "0x00000000000";
       }
       if (res?.status) {
+        // saveTxHash to the server
+        const txHash = res.transactionHash;
+        const saveHashRes = await saveTXHash(row[12], txHash);
         setLoader(false);
         toast.success(`Successfully minted SBT for row number ${i + 1}.`);
 
